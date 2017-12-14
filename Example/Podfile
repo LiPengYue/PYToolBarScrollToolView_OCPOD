@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'PYToolBarScrollView_Example' do
+  pod 'PYToolBarScrollView', :path => '../'
+
+  target 'PYToolBarScrollView_Tests' do
+    inherit! :search_paths
+
+    pod 'FBSnapshotTestCase'
+  end
+end
