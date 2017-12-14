@@ -7,24 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04B6AC04EC57FE4EB2C25F2A6B0D90D3 /* PYScrollToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13A0DA2E3802DB70F6FD9663D686850E /* PYScrollToolBarView.m */; };
 		051A816D6DD0CAE13496DDCFE0829167 /* UIImage+Diff.h in Headers */ = {isa = PBXBuildFile; fileRef = 85E250EF19C5B5671AEC10BEB508D087 /* UIImage+Diff.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		094973D2D2F1E3B2E772F93C8147C6B9 /* UIApplication+StrictKeyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EECE81A9AEC1ED1057A9C3C88DBCEBE /* UIApplication+StrictKeyWindow.m */; };
 		1AB7934C16CE49DE196FFC7BE7278287 /* SwiftSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97545C39C4A5EE2631DD9FFECE76A40 /* SwiftSupport.swift */; };
+		1B56E53C0B40F522FBBE8F48F06553BF /* PYToolBarScrollView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9C807CA6D607BEFE1C6CC653407283 /* PYToolBarScrollView-dummy.m */; };
+		272E4E37F9A5933E31DB7B08B636344A /* ReplaceMe.m in Sources */ = {isa = PBXBuildFile; fileRef = A0EDBC34CFA4C7C5996800FE4004F6B3 /* ReplaceMe.m */; };
 		2F485B69F51E4F723A38410F31F08550 /* FBSnapshotTestController.h in Headers */ = {isa = PBXBuildFile; fileRef = 1374B79237CAC07693E99442FBED1F15 /* FBSnapshotTestController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35DD05FD595A6FE7F5A0692D12E319DC /* UIImage+Diff.m in Sources */ = {isa = PBXBuildFile; fileRef = B9CEF7D6C5E08AB80E58DABC75D882BC /* UIImage+Diff.m */; };
 		421CDD701AEE0F2458A84200366CDD0F /* UIImage+Snapshot.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B161931541BFE46DFEA2092EDDDA815 /* UIImage+Snapshot.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		506D761F91EC3583789A837C559972FE /* FBSnapshotTestCase-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C18C0EB1FED5EB5CE3B0E768AC510F /* FBSnapshotTestCase-dummy.m */; };
-		66691534A21A5B8153BE802524885223 /* PYToolBarScrollView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BEDBD3E3DD0EE567F57BB039D5C90820 /* PYToolBarScrollView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		69D41810942F5C7220309233084E1E1A /* ReplaceMe.m in Sources */ = {isa = PBXBuildFile; fileRef = B4046AE31D2F474A32E0532C705EDC6F /* ReplaceMe.m */; };
 		69DA8B003216466C60F029CBD79897F1 /* UIImage+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5E22F9517F21D3A0251F88FCAB281E /* UIImage+Compare.m */; };
 		6C0BD66AFDCD0D6AAE5B26B0E469FAD9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E88A450A84E3957158B3B3459740AA /* Foundation.framework */; };
 		6F546975A83C7B1621EBB5310A539043 /* Pods-PYToolBarScrollView_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 349F2202F5A5E214B3AAD3221C13CC92 /* Pods-PYToolBarScrollView_Tests-dummy.m */; };
+		6FE418D982F2535A2954A08188076EB0 /* PYToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = E03FF08E2C9877A7897659EC9B8BB095 /* PYToolBarView.m */; };
 		756564ABAF2892FE7140C92A1CDDCF65 /* UIImage+Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBFBDCC891B770A2AC9EF0FB164B751 /* UIImage+Snapshot.m */; };
 		7E9B14D5F8842A86CA86F2AF45230725 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8F339250A1C3C5C5C5364254007103 /* XCTest.framework */; };
 		841FF232C33C7D49C58CEFDBE7EEB92B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA323C90663942983643D7A4D1F697C8 /* UIKit.framework */; };
 		91D0138ACFAD733E4061F12E450C336C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E88A450A84E3957158B3B3459740AA /* Foundation.framework */; };
 		9673CF780F48C8E4EC2A331717B1F67C /* FBSnapshotTestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = E37899BD4B349060AA147E2A3721D3A2 /* FBSnapshotTestCase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A4F69F3477A935285620AC3031C5C848 /* FBSnapshotTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 052258A488A96C35531FAC73C4F42924 /* FBSnapshotTestController.m */; };
+		A7ABA76B6E9BF0CA43185A1F9256F98D /* PYToolBarScrollView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BD95859A4CABA89B7E75ABBC0F7E4EA4 /* PYToolBarScrollView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A86AD13BA6902EA3ADF827E5F5B60A23 /* Pods-PYToolBarScrollView_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E9D3666849295046A22D89FA9679D913 /* Pods-PYToolBarScrollView_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ACF884E3A68F0FC3DEBDAE8716420109 /* Pods-PYToolBarScrollView_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F925C1E497C651A898F57494698AC170 /* Pods-PYToolBarScrollView_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AF84838259013115A04E12B682354B7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E88A450A84E3957158B3B3459740AA /* Foundation.framework */; };
@@ -36,8 +39,9 @@
 		CAFA5E486BCE117A7D8C0FBF9DA6666B /* UIImage+Compare.h in Headers */ = {isa = PBXBuildFile; fileRef = 432938111B6FF0189EFFEDF2F845B308 /* UIImage+Compare.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		DB7A106243AC974FC7EBEB00B506C786 /* FBSnapshotTestCasePlatform.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A2557E7CE20AACCD1B28B1CD1F920D /* FBSnapshotTestCasePlatform.m */; };
 		EC574FCF229655D3FC2ECCF8E1F59005 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E88A450A84E3957158B3B3459740AA /* Foundation.framework */; };
-		ECE6ED9E0BEBA9111B6CD30C84BDD47D /* PYToolBarScrollView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 13FC4C0A6BECD3597D084902D53EEA8E /* PYToolBarScrollView-dummy.m */; };
 		ED08F0CEEE32E41B0338FCD46D2F9411 /* Pods-PYToolBarScrollView_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5EB9B20CE8BD5E2F08A02654AEE953 /* Pods-PYToolBarScrollView_Example-dummy.m */; };
+		FC1AB5B10F9556FB512B251498F56E73 /* PYScrollToolBarView.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D4A07CEE58E2290C43751865B01DE0 /* PYScrollToolBarView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD0339FAA840B5E59B009F0729E4D40C /* PYToolBarView.h in Headers */ = {isa = PBXBuildFile; fileRef = 54174B861F0CA9EBA20D55507DAC62EE /* PYToolBarView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,8 +69,10 @@
 		0F79AB007692B05E160AA89EFC899C8E /* Pods-PYToolBarScrollView_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PYToolBarScrollView_Tests-resources.sh"; sourceTree = "<group>"; };
 		10ACDB72C568916CA46AD4EE459A6C6B /* Pods-PYToolBarScrollView_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PYToolBarScrollView_Example-frameworks.sh"; sourceTree = "<group>"; };
 		1374B79237CAC07693E99442FBED1F15 /* FBSnapshotTestController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSnapshotTestController.h; path = FBSnapshotTestCase/FBSnapshotTestController.h; sourceTree = "<group>"; };
-		13FC4C0A6BECD3597D084902D53EEA8E /* PYToolBarScrollView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PYToolBarScrollView-dummy.m"; sourceTree = "<group>"; };
+		13A0DA2E3802DB70F6FD9663D686850E /* PYScrollToolBarView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PYScrollToolBarView.m; sourceTree = "<group>"; };
 		1C11D1A2953579ED789196FDEE416900 /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FBSnapshotTestCase.framework; path = FBSnapshotTestCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		21F65E8C34C667EC81D342D172BA0205 /* PYToolBarScrollView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PYToolBarScrollView-prefix.pch"; sourceTree = "<group>"; };
+		235AD789DC88B0362593245459C39958 /* PYToolBarScrollView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = PYToolBarScrollView.modulemap; sourceTree = "<group>"; };
 		2D668F76CB8EFD5EE19FE194356C987D /* Pods-PYToolBarScrollView_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PYToolBarScrollView_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		2EECE81A9AEC1ED1057A9C3C88DBCEBE /* UIApplication+StrictKeyWindow.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIApplication+StrictKeyWindow.m"; path = "FBSnapshotTestCase/Categories/UIApplication+StrictKeyWindow.m"; sourceTree = "<group>"; };
 		3139484936B0DD0EB72C608126BF938A /* Pods_PYToolBarScrollView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_PYToolBarScrollView_Tests.framework; path = "Pods-PYToolBarScrollView_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,34 +81,33 @@
 		3A8F339250A1C3C5C5C5364254007103 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		3B5E22F9517F21D3A0251F88FCAB281E /* UIImage+Compare.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Compare.m"; path = "FBSnapshotTestCase/Categories/UIImage+Compare.m"; sourceTree = "<group>"; };
 		3DBFBDCC891B770A2AC9EF0FB164B751 /* UIImage+Snapshot.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Snapshot.m"; path = "FBSnapshotTestCase/Categories/UIImage+Snapshot.m"; sourceTree = "<group>"; };
+		3E96C584111B0A0B29C9DE1BD7EBB340 /* PYToolBarScrollView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PYToolBarScrollView.xcconfig; sourceTree = "<group>"; };
 		432938111B6FF0189EFFEDF2F845B308 /* UIImage+Compare.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Compare.h"; path = "FBSnapshotTestCase/Categories/UIImage+Compare.h"; sourceTree = "<group>"; };
 		4391E82A1AE1B17A0DA910C8359E040A /* Pods-PYToolBarScrollView_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PYToolBarScrollView_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		4500A291601E088BC45F35FDF63CD3B1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C5EB9B20CE8BD5E2F08A02654AEE953 /* Pods-PYToolBarScrollView_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PYToolBarScrollView_Example-dummy.m"; sourceTree = "<group>"; };
 		52C18C0EB1FED5EB5CE3B0E768AC510F /* FBSnapshotTestCase-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FBSnapshotTestCase-dummy.m"; sourceTree = "<group>"; };
 		52F637BC870ED6F345F0A680CF585009 /* Pods-PYToolBarScrollView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PYToolBarScrollView_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		54174B861F0CA9EBA20D55507DAC62EE /* PYToolBarView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PYToolBarView.h; sourceTree = "<group>"; };
 		58A2557E7CE20AACCD1B28B1CD1F920D /* FBSnapshotTestCasePlatform.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestCasePlatform.m; path = FBSnapshotTestCase/FBSnapshotTestCasePlatform.m; sourceTree = "<group>"; };
 		5EC434E23E55BF38293D8B73282B93EF /* PYToolBarScrollView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PYToolBarScrollView.framework; path = PYToolBarScrollView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6000988247D784B63C2968B2A72ECEB8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		69AA938008C876DA0152354FA667E32B /* PYToolBarScrollView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PYToolBarScrollView-prefix.pch"; sourceTree = "<group>"; };
 		6E66B4218824CF8160D93713DDBEEA82 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6FB07895B1B405851D8EBFCD88403168 /* Pods-PYToolBarScrollView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PYToolBarScrollView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		73D037B3C804B9E1BB70538E342E5104 /* FBSnapshotTestCase-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FBSnapshotTestCase-umbrella.h"; sourceTree = "<group>"; };
 		7E3DB4D092B985E76E227F7F313C6981 /* FBSnapshotTestCasePlatform.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSnapshotTestCasePlatform.h; path = FBSnapshotTestCase/FBSnapshotTestCasePlatform.h; sourceTree = "<group>"; };
 		823558E8AC8EB39D028DB5FBBEA227A3 /* FBSnapshotTestCase.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = FBSnapshotTestCase.modulemap; sourceTree = "<group>"; };
 		85E250EF19C5B5671AEC10BEB508D087 /* UIImage+Diff.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Diff.h"; path = "FBSnapshotTestCase/Categories/UIImage+Diff.h"; sourceTree = "<group>"; };
-		8CE3ED8082EFE07C45B449ED1FF6F719 /* PYToolBarScrollView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PYToolBarScrollView.xcconfig; sourceTree = "<group>"; };
 		8E30F6E300C97FC0FCB3A86D3C04E087 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		989976FDECDFB81325B878E7B299D7BC /* Pods-PYToolBarScrollView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PYToolBarScrollView_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		9D7758E2802DDC7731D328CB43D75801 /* Pods-PYToolBarScrollView_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PYToolBarScrollView_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		A12C36A32A8F002A8B5E468DEA8BE698 /* PYToolBarScrollView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = PYToolBarScrollView.modulemap; sourceTree = "<group>"; };
+		A0EDBC34CFA4C7C5996800FE4004F6B3 /* ReplaceMe.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ReplaceMe.m; path = PYToolBarScrollView/Classes/ReplaceMe.m; sourceTree = "<group>"; };
 		A27810809BAD71E4022600B21251449F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		AA323C90663942983643D7A4D1F697C8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		B4046AE31D2F474A32E0532C705EDC6F /* ReplaceMe.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ReplaceMe.m; path = PYToolBarScrollView/Classes/ReplaceMe.m; sourceTree = "<group>"; };
+		B3D4A07CEE58E2290C43751865B01DE0 /* PYScrollToolBarView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PYScrollToolBarView.h; sourceTree = "<group>"; };
 		B9109B8B333B5A1A3E92EFC09EDC10AC /* UIApplication+StrictKeyWindow.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIApplication+StrictKeyWindow.h"; path = "FBSnapshotTestCase/Categories/UIApplication+StrictKeyWindow.h"; sourceTree = "<group>"; };
 		B9CEF7D6C5E08AB80E58DABC75D882BC /* UIImage+Diff.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Diff.m"; path = "FBSnapshotTestCase/Categories/UIImage+Diff.m"; sourceTree = "<group>"; };
-		BEDBD3E3DD0EE567F57BB039D5C90820 /* PYToolBarScrollView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PYToolBarScrollView-umbrella.h"; sourceTree = "<group>"; };
+		BD95859A4CABA89B7E75ABBC0F7E4EA4 /* PYToolBarScrollView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PYToolBarScrollView-umbrella.h"; sourceTree = "<group>"; };
 		C6C54835A7463CED65291126F5756850 /* Pods-PYToolBarScrollView_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PYToolBarScrollView_Example-resources.sh"; sourceTree = "<group>"; };
 		C6E88A450A84E3957158B3B3459740AA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		CC12BCFA3FC0B8C307F5B38C673EDD12 /* FBSnapshotTestCase-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FBSnapshotTestCase-prefix.pch"; sourceTree = "<group>"; };
@@ -110,11 +115,14 @@
 		D6F3CE8EE5D4CE38F3558C510BE6BE19 /* Pods-PYToolBarScrollView_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PYToolBarScrollView_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		D97545C39C4A5EE2631DD9FFECE76A40 /* SwiftSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftSupport.swift; path = FBSnapshotTestCase/SwiftSupport.swift; sourceTree = "<group>"; };
 		DADAF30F2D84FDAAD2ADD2D50C1F40DF /* FBSnapshotTestCase.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FBSnapshotTestCase.xcconfig; sourceTree = "<group>"; };
+		E03FF08E2C9877A7897659EC9B8BB095 /* PYToolBarView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PYToolBarView.m; sourceTree = "<group>"; };
+		E1B8605C42027ED253E59096244BBA15 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E37899BD4B349060AA147E2A3721D3A2 /* FBSnapshotTestCase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSnapshotTestCase.h; path = FBSnapshotTestCase/FBSnapshotTestCase.h; sourceTree = "<group>"; };
 		E9D3666849295046A22D89FA9679D913 /* Pods-PYToolBarScrollView_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PYToolBarScrollView_Tests-umbrella.h"; sourceTree = "<group>"; };
 		EB4226F6E99724905E0CBC5A18C9D1AA /* Pods_PYToolBarScrollView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_PYToolBarScrollView_Example.framework; path = "Pods-PYToolBarScrollView_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0DDD34FC0A86F02A7313B1AD4B51A2E /* Pods-PYToolBarScrollView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-PYToolBarScrollView_Example.modulemap"; sourceTree = "<group>"; };
 		F925C1E497C651A898F57494698AC170 /* Pods-PYToolBarScrollView_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PYToolBarScrollView_Example-umbrella.h"; sourceTree = "<group>"; };
+		FA9C807CA6D607BEFE1C6CC653407283 /* PYToolBarScrollView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PYToolBarScrollView-dummy.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,20 +186,6 @@
 			path = "../Target Support Files/FBSnapshotTestCase";
 			sourceTree = "<group>";
 		};
-		16562F8C4DFD1A1E0F7428FB25772E6A /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				6000988247D784B63C2968B2A72ECEB8 /* Info.plist */,
-				A12C36A32A8F002A8B5E468DEA8BE698 /* PYToolBarScrollView.modulemap */,
-				8CE3ED8082EFE07C45B449ED1FF6F719 /* PYToolBarScrollView.xcconfig */,
-				13FC4C0A6BECD3597D084902D53EEA8E /* PYToolBarScrollView-dummy.m */,
-				69AA938008C876DA0152354FA667E32B /* PYToolBarScrollView-prefix.pch */,
-				BEDBD3E3DD0EE567F57BB039D5C90820 /* PYToolBarScrollView-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/PYToolBarScrollView";
-			sourceTree = "<group>";
-		};
 		2287B5EBEAA3C332F8DB9A1E61F5B097 /* FBSnapshotTestCase */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,12 +212,26 @@
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				EC1C7AC1A30D116DEDDFBCFDC9870087 /* Development Pods */,
+				B478434403F182E0FCE6DBB386A4ECF8 /* Development Pods */,
 				14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */,
 				FBD2D672921284E66F309CA3462F84D6 /* Pods */,
 				355B3EB89CF87402A78C364E8CDA1C37 /* Products */,
 				94C0EE9508FD66E828D2E844FF2DEB80 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		805E9E25FB0439C99ADCDB2CD6339972 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E1B8605C42027ED253E59096244BBA15 /* Info.plist */,
+				235AD789DC88B0362593245459C39958 /* PYToolBarScrollView.modulemap */,
+				3E96C584111B0A0B29C9DE1BD7EBB340 /* PYToolBarScrollView.xcconfig */,
+				FA9C807CA6D607BEFE1C6CC653407283 /* PYToolBarScrollView-dummy.m */,
+				21F65E8C34C667EC81D342D172BA0205 /* PYToolBarScrollView-prefix.pch */,
+				BD95859A4CABA89B7E75ABBC0F7E4EA4 /* PYToolBarScrollView-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/PYToolBarScrollView";
 			sourceTree = "<group>";
 		};
 		8D22B0D091B0427E43C82354D9CA8E06 /* iOS */ = {
@@ -235,16 +243,6 @@
 				3A8F339250A1C3C5C5C5364254007103 /* XCTest.framework */,
 			);
 			name = iOS;
-			sourceTree = "<group>";
-		};
-		903F70BBAA1218C40859375E41AFBC25 /* PYToolBarScrollView */ = {
-			isa = PBXGroup;
-			children = (
-				B4046AE31D2F474A32E0532C705EDC6F /* ReplaceMe.m */,
-				16562F8C4DFD1A1E0F7428FB25772E6A /* Support Files */,
-			);
-			name = PYToolBarScrollView;
-			path = ../..;
 			sourceTree = "<group>";
 		};
 		94C0EE9508FD66E828D2E844FF2DEB80 /* Targets Support Files */ = {
@@ -282,6 +280,14 @@
 			name = SwiftSupport;
 			sourceTree = "<group>";
 		};
+		B478434403F182E0FCE6DBB386A4ECF8 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F1127CDCB772D4BF8EABCE828A0E17E8 /* PYToolBarScrollView */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
 		C3DD52307966515502BAAB75E789B12E /* Pods-PYToolBarScrollView_Example */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,12 +306,27 @@
 			path = "Target Support Files/Pods-PYToolBarScrollView_Example";
 			sourceTree = "<group>";
 		};
-		EC1C7AC1A30D116DEDDFBCFDC9870087 /* Development Pods */ = {
+		CEDC48A2D34A39B20482D988044ED6E9 /* PYScrollToolBarView */ = {
 			isa = PBXGroup;
 			children = (
-				903F70BBAA1218C40859375E41AFBC25 /* PYToolBarScrollView */,
+				B3D4A07CEE58E2290C43751865B01DE0 /* PYScrollToolBarView.h */,
+				13A0DA2E3802DB70F6FD9663D686850E /* PYScrollToolBarView.m */,
+				54174B861F0CA9EBA20D55507DAC62EE /* PYToolBarView.h */,
+				E03FF08E2C9877A7897659EC9B8BB095 /* PYToolBarView.m */,
 			);
-			name = "Development Pods";
+			name = PYScrollToolBarView;
+			path = PYToolBarScrollView/Classes/PYScrollToolBarView;
+			sourceTree = "<group>";
+		};
+		F1127CDCB772D4BF8EABCE828A0E17E8 /* PYToolBarScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				A0EDBC34CFA4C7C5996800FE4004F6B3 /* ReplaceMe.m */,
+				CEDC48A2D34A39B20482D988044ED6E9 /* PYScrollToolBarView */,
+				805E9E25FB0439C99ADCDB2CD6339972 /* Support Files */,
+			);
+			name = PYToolBarScrollView;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		F35791481CAFDD8E7715AE1B44687328 /* Core */ = {
@@ -340,14 +361,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		1CB1AFB12C80FD956DEBE01EE9F1BFA1 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				66691534A21A5B8153BE802524885223 /* PYToolBarScrollView-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		567B91BAD19B24228352AAB0CE1D27EF /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -376,6 +389,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				A86AD13BA6902EA3ADF827E5F5B60A23 /* Pods-PYToolBarScrollView_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6C117CC8A15ADFECD3D1CF85C4464A1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC1AB5B10F9556FB512B251498F56E73 /* PYScrollToolBarView.h in Headers */,
+				A7ABA76B6E9BF0CA43185A1F9256F98D /* PYToolBarScrollView-umbrella.h in Headers */,
+				FD0339FAA840B5E59B009F0729E4D40C /* PYToolBarView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,9 +462,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9B2DB56DFB710C3B841BAD15C92BBF82 /* Build configuration list for PBXNativeTarget "PYToolBarScrollView" */;
 			buildPhases = (
-				1878A1F78C568DABB8BF3204C49B87D8 /* Sources */,
+				5D3AAF78534C6C2E951DDFF4A9A44374 /* Sources */,
 				D6E96D900056BE9A948C0D8026C70AA1 /* Frameworks */,
-				1CB1AFB12C80FD956DEBE01EE9F1BFA1 /* Headers */,
+				F6C117CC8A15ADFECD3D1CF85C4464A1 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -482,12 +505,14 @@
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1878A1F78C568DABB8BF3204C49B87D8 /* Sources */ = {
+		5D3AAF78534C6C2E951DDFF4A9A44374 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECE6ED9E0BEBA9111B6CD30C84BDD47D /* PYToolBarScrollView-dummy.m in Sources */,
-				69D41810942F5C7220309233084E1E1A /* ReplaceMe.m in Sources */,
+				04B6AC04EC57FE4EB2C25F2A6B0D90D3 /* PYScrollToolBarView.m in Sources */,
+				1B56E53C0B40F522FBBE8F48F06553BF /* PYToolBarScrollView-dummy.m in Sources */,
+				6FE418D982F2535A2954A08188076EB0 /* PYToolBarView.m in Sources */,
+				272E4E37F9A5933E31DB7B08B636344A /* ReplaceMe.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,7 +661,7 @@
 		};
 		3A097025594983720610189245B12325 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8CE3ED8082EFE07C45B449ED1FF6F719 /* PYToolBarScrollView.xcconfig */;
+			baseConfigurationReference = 3E96C584111B0A0B29C9DE1BD7EBB340 /* PYToolBarScrollView.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -755,7 +780,7 @@
 		};
 		84552E76E40F50851EA28A3353D4BFCA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8CE3ED8082EFE07C45B449ED1FF6F719 /* PYToolBarScrollView.xcconfig */;
+			baseConfigurationReference = 3E96C584111B0A0B29C9DE1BD7EBB340 /* PYToolBarScrollView.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
