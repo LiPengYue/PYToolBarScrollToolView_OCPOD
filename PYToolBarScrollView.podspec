@@ -1,42 +1,25 @@
-#
-# Be sure to run `pod lib lint PYToolBarScrollView.podspec' to ensure this is a
-# valid spec before submitting.
-#
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
-#
+
 
 Pod::Spec.new do |s|
   s.name             = 'PYToolBarScrollView'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of PYToolBarScrollView.'
+  s.summary          = '多个scrollView组合的组件'
 
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+1. 随着底部的scrollView的滚动，topView与toolBarView也跟着上下滚动。
+2.  toolBarView的到顶部的时候悬停
                        DESC
 
-  s.homepage         = 'https://github.com/LiPengYue/PYToolBarScrollView'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.homepage         = 'https://github.com/LiPengYue/PYToolBarScrollToolView_OCPOD'
+
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'LiPengYue' => '702029772@qq.com' }
-  s.source           = { :git => 'https://github.com/LiPengYue/PYToolBarScrollView.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => 'https://github.com/LiPengYue/PYToolBarScrollToolView_OCPOD.git', :tag => s.version.to_s }
+
 
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'PYToolBarScrollView/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'PYToolBarScrollView' => ['PYToolBarScrollView/Assets/*.png']
-  # }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end
