@@ -10,8 +10,10 @@
 #endif
 #endif
 
+#import "PYMidView.h"
 #import "PYScrollToolBarView.h"
 #import "PYToolBarView.h"
+#import "UIView+PYSizeView.h"
 
 FOUNDATION_EXPORT double PYToolBarScrollViewVersionNumber;
 FOUNDATION_EXPORT const unsigned char PYToolBarScrollViewVersionString[];

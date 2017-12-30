@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class PYToolBarView;
+@class PYMidView;
 @interface PYScrollToolBarView : UIScrollView
 ///底部的view的集合
 @property (nonatomic,strong) NSArray <UIView *>* bottomViewSet;
@@ -20,7 +21,7 @@
 @property (nonatomic,assign) CGFloat scrollTopMargin;
 ///是否可以滚动到顶部,在传入的scrollView,contentSize不够的情况下 暂时关闭 重写了get方法,一直设置为true
 @property (nonatomic,assign) BOOL isLayoutContentSize;
-
+@property (nonatomic,assign) BOOL isNotScrollBottomView;
 ///暂时关闭 不支持联动 重写了get方法,一直设置为false
 @property (nonatomic,assign) BOOL isLinkageTopBottomView;
 
@@ -39,6 +40,15 @@
        andMidToolBarViewMargin:(CGFloat)midToolBarViewMargin
             andMidToolBarViewH:(CGFloat)midToolBarViewH
               andBottomViewSet:(NSArray <UIView *>*)bottomViewSet;
+    
+- (instancetype) initWithFrame:(CGRect)frame
+                    andTopView:(UIView *)topView
+                   andTopViewH:(CGFloat)topViewH
+                    andMidView:(PYMidView *)midView
+       andMidToolBarViewMargin:(CGFloat)midToolBarViewMargin
+            andMidToolBarViewH:(CGFloat)midToolBarViewH
+              andBottomViewSet:(NSArray<UIView *> *)bottomViewSet;
+    
 ///对于中间的ToolBarView点击事件的回调
 - (void)midToolBarViewClickWithBlock: (void(^)(NSInteger index, NSString *title,UIButton *option))clickMidToolBarViewBlock;
 /// self 滑动的时候调用

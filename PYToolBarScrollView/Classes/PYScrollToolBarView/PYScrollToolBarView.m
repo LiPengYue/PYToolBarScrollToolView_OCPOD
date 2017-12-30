@@ -8,7 +8,9 @@
 
 #import "PYScrollToolBarView.h"
 #import "PYToolBarView.h"
-#define kToolBarViewOffsetTop CGPointMake(0, self.kTopViewH + self.scrollTopMargin)
+#import "PYMidView.h"
+#import "UIView+PYSizeView.h"
+//#define kToolBarViewOffsetTop CGPointMake(0, self.kTopViewH + self.scrollTopMargin)
 #define kToolBarViewOffsetBottom CGPointMake(0, 0)
 
 @interface PYScrollToolBarView () <UIScrollViewDelegate>
@@ -25,13 +27,15 @@
 @property (nonatomic,assign) CGFloat kBottomScrollViewY;//self.bottomScrollView.Y
 @property (nonatomic,assign) BOOL isSetupSubView;//是否布局子控件
 @property (nonatomic,assign) CGFloat offsetY;//当前的scrollView 与self的偏移量的差值
-
+@property (nonatomic,weak) UIScrollView *crruntScrollView;
 //MARK: subView
 @property (nonatomic,strong) UIView *topView;///顶部的展示view
+@property (nonatomic,strong) PYMidView *midView;
 @property (nonatomic,strong) PYToolBarView *midToolBarView;///中间的工具栏
+@property (nonatomic,strong) UIView *midBackgroundView;
 //底部的scrollView，里面装了从外面传进来的view的集合
 @property (nonatomic,strong) UIScrollView *bottomScrollView;
-
+@property (nonatomic,assign) BOOL isTouched;
 
 //MARK: 事件传递的block
 @property (nonatomic,copy) void(^clickMidToolBarViewBlock)(NSInteger index, NSString *title,UIButton *option);
@@ -39,11 +43,14 @@
 @property (nonatomic,copy) void(^scrollCallBack)(CGFloat contentOffsetY);
 /// 设置 监听 滚动 的view
 @property (nonatomic,copy) UIScrollView *(^setObserveViewScrollBlock)(UIView *currentView,NSInteger index);
+@property (nonatomic,strong) NSMutableDictionary *scrollViewDic;
+@property (nonatomic,assign) BOOL isScrollBottomView1;
 @end
 
 
 
 @implementation PYScrollToolBarView
+
 
 @synthesize bottomViewSet = _bottomViewSet;
 
@@ -116,6 +123,27 @@
     return self;
 }
 
+- (instancetype) initWithFrame:(CGRect)frame
+                    andTopView:(UIView *)topView
+                   andTopViewH:(CGFloat)topViewH
+                    andMidView:(PYMidView *)midView
+       andMidToolBarViewMargin:(CGFloat)midToolBarViewMargin
+            andMidToolBarViewH:(CGFloat)midToolBarViewH
+              andBottomViewSet:(NSArray<UIView *> *)bottomViewSet {
+    if (self = [super initWithFrame:frame]) {
+        self.topView = topView;
+        self.kTopViewH = topViewH;
+        self.midToolBarViewMargin = midToolBarViewMargin;
+        self.midView = midView;
+        self.midToolBarView = [midView.delegate registerToolBarView];
+        self.kMidToolBarViewH = midToolBarViewH;
+        self.bottomViewSet = bottomViewSet;
+        self.isConstantChange = true;
+        self.isSetupSubView = true;
+        self.delegate = self;
+    }
+    return self;
+}
 
 #pragma mark - layoutSubViews 布局子控件
 - (void)layoutSubviews {
@@ -135,8 +163,10 @@
         self.kScrollToolBarViewH = self.frame.size.height;
         self.kScrollToolBarViewW = self.frame.size.width;
         self.kMidToolBarViewW = self.kScrollToolBarViewW - self.midToolBarViewMargin * 2;
-        self.kBottomScrollViewH = self.kScrollToolBarViewH - self.kMidToolBarViewH;
-        self.kBottomScrollViewY = self.kTopViewH + self.kMidToolBarViewH;
+//        self.kBottomScrollViewH = self.kScrollToolBarViewH - self.kMidToolBarViewH;
+        self.kBottomScrollViewH = self.kScrollToolBarViewH;
+//        self.kBottomScrollViewY = self.kTopViewH + self.kMidToolBarViewH;
+        self.kBottomScrollViewY = 0;
         self.selectToolBarViewIndex = self.midToolBarView.selectItemIndex;
     }
 }
@@ -146,13 +176,21 @@
     if (!isSetupSubView) {
         return;
     }
+    self.contentSize = CGSizeMake(0, self.kTopViewH + self.scrollTopMargin + self.getH);
+    
+    if (@available(iOS 11.0, *)) {
+        self.contentInsetAdjustmentBehavior = UIApplicationBackgroundFetchIntervalNever;
+    } else {
+        // Fallback on earlier versions
+    }
     self.isSetupSubView = NO;
+    //布局底部的ScrollView （把外界传入的View集合，添加到scrollView上）
+    [self setupBottomScrollView];
     //布局topView
     [self setupTopView];
     //布局midToolBarView
     [self setupMidToolBarView];
-    //布局底部的ScrollView （把外界传入的View集合，添加到scrollView上）
-    [self setupBottomScrollView];
+    
 }
 
 //布局topView
@@ -163,8 +201,9 @@
 
 //布局中间的toolBarView
 - (void)setupMidToolBarView {
-    self.midToolBarView.frame = CGRectMake(self.midToolBarViewMargin, self.kTopViewH, self.kMidToolBarViewW, self.kMidToolBarViewH);
-    [self addSubview: self.midToolBarView];
+    self.midBackgroundView.frame = CGRectMake(self.midToolBarViewMargin, self.kTopViewH, self.kMidToolBarViewW, self.kMidToolBarViewH);
+    [self addSubview:self.midBackgroundView];
+//    self.midToolBarView.frame = CGRectMake(self.midToolBarViewMargin, self.kTopViewH, self.kMidToolBarViewW, self.kMidToolBarViewH);
     
     //MARK: 中间的toolbarView点击事件的回调
     __weak typeof (self)weakSelf = self;
@@ -174,13 +213,28 @@
         //如果点击事件回调被实现，那么执行外部的回调事件
         if (weakSelf.clickMidToolBarViewBlock) weakSelf.clickMidToolBarViewBlock(index,itemText,button);
     }];
-    [self.midToolBarView show];
+    UIView *view = self.midView;
+    if (!view) {
+        view = self.midToolBarView;
+    }
+    
+    view.frame = CGRectMake(0, 0, self.midBackgroundView.getW, self.midBackgroundView.getH);
+    
+    if (view == self.midToolBarView) {
+        [self.midToolBarView show];
+    }
+    if (!view) NSLog(@"🌶，没有接收到toolBarView");
+    [self.midBackgroundView addSubview: view];
 }
 
 //布局底部的ScrollView （把外界传入的View集合，添加到scrollView上）
 - (void)setupBottomScrollView {
     self.bottomScrollView = [[UIScrollView alloc]init];
-    
+    if (@available(iOS 11.0, *)) {
+        self.bottomScrollView.contentInsetAdjustmentBehavior = UIApplicationBackgroundFetchIntervalNever;
+    } else {
+        // Fallback on earlier versions
+    }
     self.bottomScrollView.frame = CGRectMake(0, self.kBottomScrollViewY, self.kScrollToolBarViewW, self.kBottomScrollViewH);
     CGFloat bottomScrollViewContentSizeX = self.bottomViewSet.count * self.kScrollToolBarViewW;
     self.bottomScrollView.contentSize = CGSizeMake(bottomScrollViewContentSizeX, self.kBottomScrollViewH);
@@ -206,7 +260,9 @@
         if (weakSelf.setObserveViewScrollBlock) {
             UIScrollView *scrollView = weakSelf.setObserveViewScrollBlock(view,idx);
             if (scrollView) {
+                NSString *indexStr = [NSString stringWithFormat:@"%ld",idx];
                 view = scrollView;
+                weakSelf.scrollViewDic[indexStr] = view;
             }else{
                 NSLog(@"\n👌👌👌:\n\n setObserveViewScrollFunc 返回的view为nil, \n     👌massage: \n     👌view为:%@,\n     👌下标为%ld\n👌👌👌",view,idx);
             }
@@ -217,6 +273,14 @@
             UIScrollView *scrollView = (UIScrollView *)view;
             //添加观察者
             [scrollView addObserver:weakSelf forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+            if (@available(iOS 11.0, *)) {
+                scrollView.contentInsetAdjustmentBehavior = UIApplicationBackgroundFetchIntervalNever;
+            } else {
+                // Fallback on earlier versions
+            }
+            scrollView.contentInset = UIEdgeInsetsMake(self.kTopViewH + self.kMidToolBarViewH + self.scrollTopMargin, 0, 0, 0);
+            scrollView.contentOffset = CGPointMake(0, -_kTopViewH - self.scrollTopMargin - self.kMidToolBarViewH);
+            
             ///手势优先级
             [self.panGestureRecognizer requireGestureRecognizerToFail:scrollView.panGestureRecognizer];
         }
@@ -228,67 +292,38 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     ///手势监听
     if ([keyPath isEqualToString:@"contentOffset"]) {
-        if (self.kTopViewH <= 0) {
+        if (self.kTopViewH <= 0 || !self.isTouched) {
             return;
         }
         
         UIScrollView *scrollView = (UIScrollView *) object;
         NSNumber *newContentOffsetNum = [change valueForKey:NSKeyValueChangeNewKey];
         CGPoint newContentOffset = newContentOffsetNum.CGPointValue;
-        NSNumber *oldContentOffsetNum = [change valueForKey:NSKeyValueChangeOldKey];
-        CGPoint oldContentOffset = oldContentOffsetNum.CGPointValue;
+        NSNumber *oldNum = [change valueForKey:NSKeyValueChangeOldKey];
+        CGPoint oldContentOffset = newContentOffsetNum.CGPointValue;
+        //偏移量设置
+        [self setScrollContentInset:scrollView];
         
-        //偏移量的计算
-        //向下拉
-        BOOL isDown = oldContentOffset.y > newContentOffset.y;
-        BOOL isScrollViewNotScroll = scrollView.contentSize.height < scrollView.frame.size.height;
-        BOOL isTracking = scrollView.dragging && scrollView.tracking && !scrollView.decelerating;
-        BOOL isGreater = self.contentOffset.y > newContentOffset.y;
+        //是否移动到顶了
+        BOOL scrollTop = scrollView.contentOffset.y >= -self.kMidToolBarViewH - self.scrollTopMargin - self.contentOffset.y;
+        BOOL scrollBottom = scrollView.contentOffset.y < -self.kTopViewH - self.kMidToolBarViewH;
         
-        if (scrollView.contentOffset.y <= 0){
-            if (newContentOffset.y < 0) {
-                self.offsetY = 0;
-            }
+        if (!scrollTop && !scrollBottom) {
+            [self.topView setY:-newContentOffset.y - scrollView.contentInset.top];
+            [self.midBackgroundView setY: -newContentOffset.y - scrollView.contentInset.top + self.kTopViewH + self.scrollTopMargin];
         }
         
-        if (scrollView.contentOffset.y >= kToolBarViewOffsetTop.y) {
-            if (newContentOffset.y > kToolBarViewOffsetTop.y) {
-                self.offsetY = 0;
-            }
+        if (scrollTop) {
+            [self.topView setY:-self.kTopViewH + self.contentOffset.y];
+            [self.midBackgroundView setY:self.contentOffset.y];
         }
-        
-        if (self.isLinkageTopBottomView) {
-            if (scrollView.contentSize.height < scrollView.frame.size.height) {
-                CGPoint point = [scrollView.panGestureRecognizer translationInView:self];
-                [scrollView.panGestureRecognizer setTranslation:CGPointMake(0, 0) inView:self];
-                self.contentOffset = CGPointMake(0, -point.y + self.contentOffset.y);
-            } else {
-                self.contentOffset = CGPointMake( 0, self.offsetY + newContentOffset.y);
-            }
+        if (self.contentOffset.y != 0) {
             
-        }else{
-            if (self.contentSize.height <= self.frame.size.height + _kTopViewH) {
-                if (self.isLayoutContentSize) {
-                    CGFloat insertY = scrollView.frame.size.height + self.kTopViewH - scrollView.contentSize.height;
-                    scrollView.contentInset = UIEdgeInsetsMake(0, 0, insertY, 0);
-                }else{
-                    CGFloat insertY = scrollView.frame.size.height  - scrollView.contentSize.height;
-                    scrollView.contentInset = UIEdgeInsetsMake(0, 0, insertY, 0);
-                }
-            }else{
-                scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
-            }
         }
-        
-        
-        
-        self.contentOffset = CGPointMake(0, newContentOffset.y + self.offsetY);
-        
-        if (self.contentOffset.y <= 0) {
-            self.contentOffset = kToolBarViewOffsetBottom;
-        }
-        if (self.contentOffset.y >= kToolBarViewOffsetTop.y) {
-            self.contentOffset = kToolBarViewOffsetTop;
+        if (scrollBottom) {
+            [self setContentOffset:CGPointMake(0, 0) animated:false];
+            [self.topView setY:0];
+            [self.midBackgroundView setY:self.kTopViewH + self.scrollTopMargin];
         }
     }else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
@@ -299,29 +334,52 @@
 #pragma mark - scrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (scrollView == self) {
-        //self滑动回调
-        if (self.scrollCallBack) {
-            self.scrollCallBack(scrollView.contentOffset.y);
+        if (self.contentOffset.y > self.kTopViewH + self.scrollTopMargin) {
+            if (self.crruntScrollView) {
+                [self.crruntScrollView.panGestureRecognizer requireGestureRecognizerToFail:self.panGestureRecognizer];
+            }
+            self.contentOffset = CGPointMake(0,self.kTopViewH + self.scrollTopMargin);
         }
-        //防止self 滑动过大，从而超出范围
-        if (self.contentOffset.y <= 0) {
+        if (self.contentOffset.y < 0) {
             self.contentOffset = CGPointMake(0, 0);
         }
-        if (self.contentOffset.y >= kToolBarViewOffsetTop.y){
-            self.contentOffset = kToolBarViewOffsetTop;
-        }
         
-        //判断是否为手动拖动，如果是手动拖动，则停掉底部的tableView的滚动
-        BOOL isTracking = scrollView.dragging && scrollView.tracking && !scrollView.decelerating;
-        if (isTracking) {
-            UIView *view = self.bottomViewSet[self.midToolBarView.selectItemIndex];
-            if ( [view isKindOfClass:UIScrollView.class]) {
-                UIScrollView *scrollView = (UIScrollView *)view;
-                [scrollView setContentOffset:scrollView.contentOffset animated:false];
-            }
+        UIScrollView *currentView = [self crruntScrollView];
+        if (currentView) {
+            CGRect frame = CGRectMake(currentView.getX, 0, currentView.getW, self.kBottomScrollViewH + self.contentOffset.y);
+            self.bottomScrollView.frame = CGRectMake(0, 0, currentView.getW, self.kBottomScrollViewH + self.contentOffset.y);
+            
+            currentView.frame = frame;
+            [currentView setContentOffset:currentView.contentOffset animated:false];
         }
     }
+    
     if (scrollView == self.bottomScrollView) {
+        //当前滑动的进度
+        CGFloat indexFloat = scrollView.contentOffset.x / self.bottomScrollView.getW;
+        // 手势拖动的index
+        NSInteger frontIndex = self.midToolBarView.selectItemIndex;
+        //底部的scrollView的数量
+        NSInteger bottomViewCount = self.bottomViewSet.count;
+        
+        //判断是否越界
+        if (indexFloat > frontIndex) {
+            NSInteger wellIndex = frontIndex + 1;
+            //表示 index ++ 趋势
+            if (wellIndex >= bottomViewCount) {
+                return;
+            }
+            [self setWellScrollViewOffset:wellIndex and:frontIndex];
+        }else{
+            //表示 index -- 趋势
+            NSInteger wellIndex = frontIndex - 1;
+            if (wellIndex < 0) {
+                return;
+            }
+            [self setWellScrollViewOffset:wellIndex and:frontIndex];
+        }
+        
+        
         //计算偏移量，并且给midToolBarView的selectIndex赋值
         NSInteger index = round(scrollView.contentOffset.x / self.kScrollToolBarViewW);
         if (index != self.midToolBarView.selectItemIndex) {
@@ -329,11 +387,6 @@
             if (index < 0 || index >= self.bottomViewSet.count) return;
             //直接赋值
             self.midToolBarView.selectItemIndex = index;
-            //给self.offsetY赋值
-            if ([self.bottomViewSet[index] isKindOfClass:NSClassFromString(@"UIScrollView")]) {
-                UIScrollView *scrollView = (UIScrollView *)self.bottomViewSet[index];
-                self.offsetY = self.contentOffset.y - scrollView.contentOffset.y;
-            }
             //如果点击事件回调被实现，那么执行外部的回调事件
             if (self.clickMidToolBarViewBlock) {
                 UIButton *option = self.midToolBarView.optionItemInfo[index];
@@ -360,4 +413,71 @@
     }];
     NSLog(@"✅ %@ 被销毁",NSStringFromClass(self.class));
 }
+
+///设置 contentInset
+- (void) setScrollContentInset:(UIScrollView *)scrollView {
+    
+    CGFloat insertTop = scrollView.contentInset.top;
+    
+    if (scrollView.contentSize.height <= scrollView.getH + self.kTopViewH - self.scrollTopMargin - self.contentOffset.y) {
+        CGFloat insertY = scrollView.getH - scrollView.contentSize.height - self.contentOffset.y - self.kMidToolBarViewH;
+        insertY = (insertY < 0) ? 0 : insertY;
+        scrollView.contentInset = UIEdgeInsetsMake(insertTop, 0, insertY, 0);
+    }else{
+        scrollView.contentInset = UIEdgeInsetsMake(insertTop, 0, 0, 0);
+    }
+}
+
+///平衡scrollViewoffset
+- (void) setWellScrollViewOffset:(NSInteger)wellIndex and:(NSInteger)frontIndex {
+    UIScrollView *wellScrollView = [self getBottomScrollView:wellIndex];
+    UIScrollView *currentScrollView = [self getBottomScrollView:frontIndex];
+    if (wellScrollView) {
+        if (currentScrollView) {
+            CGFloat offsetY = (currentScrollView.contentOffset.y >= -self.kMidToolBarViewH - self.scrollTopMargin) ? -self.kMidToolBarViewH - self.scrollTopMargin : currentScrollView.contentOffset.y + self.contentOffset.y;
+            offsetY = (offsetY <= -self.kTopViewH - self.scrollTopMargin - self.kMidToolBarViewH) ? -self.kTopViewH - self.scrollTopMargin - self.kMidToolBarViewH : self.contentOffset.y;
+            wellScrollView.frame = CGRectMake(wellScrollView.getX, currentScrollView.getY, wellScrollView.getW, currentScrollView.getH);
+            [wellScrollView setContentOffset:CGPointMake(0, offsetY) animated:false];
+        }
+    }
+}
+- (UIScrollView *)getBottomScrollView: (NSInteger) index {
+    UIView *view = self.bottomViewSet[index];
+    if ([view isKindOfClass:UIScrollView.class]) {
+        return view;
+    }
+    return nil;
+}
+- (UIScrollView *)crruntScrollView {
+    NSInteger index = self.midToolBarView.selectItemIndex;
+    NSString *indexStr = [NSString stringWithFormat:@"%ld",index];
+    if (self.scrollViewDic[indexStr]) {
+        return self.scrollViewDic[indexStr];
+    }else{
+        UIScrollView *scrollView = (UIScrollView *)self.bottomViewSet[index];
+        return scrollView;
+    }
+    return nil;
+}
+- (NSMutableDictionary *)scrollViewDic {
+    if(!_scrollViewDic) {
+        _scrollViewDic = [[NSMutableDictionary alloc]init];
+    }
+    return _scrollViewDic;
+}
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+    self.isTouched = true;
+    return [super hitTest:point withEvent:event];
+}
+
+- (UIView *)midBackgroundView {
+    if(!_midBackgroundView) {
+         _midBackgroundView = [[UIView alloc]init];
+    }
+    return _midBackgroundView;
+}
 @end
+
+
+
+

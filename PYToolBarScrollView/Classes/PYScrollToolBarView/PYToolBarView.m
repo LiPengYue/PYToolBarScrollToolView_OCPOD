@@ -33,6 +33,7 @@
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor whiteColor];
         self.optionStrArray = optionStrArray;
+        
     }
     return self;
 }
