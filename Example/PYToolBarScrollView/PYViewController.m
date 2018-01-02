@@ -14,7 +14,7 @@
 
 @interface PYViewController ()
     @property (nonatomic,strong) PYScrollToolBarView *scrollToolBarView;
-@property (nonatomic,strong) UIView *topView;
+@property (nonatomic,strong) UIImageView *topView;
 @property (nonatomic,strong) PYToolBarView *toolBarView;
 @end
 
@@ -27,7 +27,8 @@
 
 - (void)setUP {
     NSArray <UIScrollView *>* array = [self getViewArray];
-    self.scrollToolBarView = [[PYScrollToolBarView alloc]initWithFrame:self.view.frame andTopView:self.topView andTopViewH:300 andMidToolBarView:self.toolBarView andMidToolBarViewMargin:0 andMidToolBarViewH:40 andBottomViewSet:array];
+    self.scrollToolBarView = [[PYScrollToolBarView alloc]initWithFrame:self.view.frame andTopView:self.topView andTopViewH:self.view.frame.size.height andMidToolBarView:self.toolBarView andMidToolBarViewMargin:0 andMidToolBarViewH:40 andBottomViewSet:array];
+    self.scrollToolBarView.scrollTopMargin = 64;
     [self.view addSubview: self.scrollToolBarView];
 }
 
@@ -39,9 +40,10 @@
     return _toolBarView;
 }
 
-- (UIView *) topView {
+- (UIImageView *) topView {
     if (!_topView) {
-        _topView = [UIView new];
+        _topView = [UIImageView new];
+        _topView.image = [UIImage imageNamed:@"2"];
     }
     return _topView;
 }

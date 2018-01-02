@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'PYToolBarScrollView'
-  s.version          = '0.1.1'
+  s.version          = '0.1.3'
   s.summary          = '多个scrollView组合的组件'
 
 

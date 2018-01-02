@@ -31,7 +31,7 @@ static NSString *cellID = @"cellID";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 12;
+    return 1;
 }
 
 

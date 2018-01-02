@@ -176,7 +176,7 @@
     if (!isSetupSubView) {
         return;
     }
-    self.contentSize = CGSizeMake(0, self.kTopViewH + self.scrollTopMargin + self.getH);
+    self.contentSize = CGSizeMake(0, self.kTopViewH + self.getH);
     
     if (@available(iOS 11.0, *)) {
         self.contentInsetAdjustmentBehavior = UIApplicationBackgroundFetchIntervalNever;
@@ -278,8 +278,8 @@
             } else {
                 // Fallback on earlier versions
             }
-            scrollView.contentInset = UIEdgeInsetsMake(self.kTopViewH + self.kMidToolBarViewH + self.scrollTopMargin, 0, 0, 0);
-            scrollView.contentOffset = CGPointMake(0, -_kTopViewH - self.scrollTopMargin - self.kMidToolBarViewH);
+            scrollView.contentInset = UIEdgeInsetsMake(self.kTopViewH + self.kMidToolBarViewH, 0, 0, 0);
+            scrollView.contentOffset = CGPointMake(0, -_kTopViewH - self.kMidToolBarViewH);
             
             ///手势优先级
             [self.panGestureRecognizer requireGestureRecognizerToFail:scrollView.panGestureRecognizer];
@@ -310,12 +310,12 @@
         
         if (!scrollTop && !scrollBottom) {
             [self.topView setY:-newContentOffset.y - scrollView.contentInset.top];
-            [self.midBackgroundView setY: -newContentOffset.y - scrollView.contentInset.top + self.kTopViewH + self.scrollTopMargin];
+            [self.midBackgroundView setY: -newContentOffset.y - scrollView.contentInset.top + self.kTopViewH];
         }
         
         if (scrollTop) {
-            [self.topView setY:-self.kTopViewH + self.contentOffset.y];
-            [self.midBackgroundView setY:self.contentOffset.y];
+            [self.topView setY:-self.kTopViewH + self.scrollTopMargin + self.contentOffset.y];
+            [self.midBackgroundView setY:self.contentOffset.y + self.scrollTopMargin];
         }
         if (self.contentOffset.y != 0) {
             
@@ -323,7 +323,7 @@
         if (scrollBottom) {
             [self setContentOffset:CGPointMake(0, 0) animated:false];
             [self.topView setY:0];
-            [self.midBackgroundView setY:self.kTopViewH + self.scrollTopMargin];
+            [self.midBackgroundView setY:self.kTopViewH];
         }
     }else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
@@ -334,11 +334,11 @@
 #pragma mark - scrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (scrollView == self) {
-        if (self.contentOffset.y > self.kTopViewH + self.scrollTopMargin) {
-            if (self.crruntScrollView) {
-                [self.crruntScrollView.panGestureRecognizer requireGestureRecognizerToFail:self.panGestureRecognizer];
-            }
-            self.contentOffset = CGPointMake(0,self.kTopViewH + self.scrollTopMargin);
+        if (self.contentOffset.y > self.kTopViewH - self.scrollTopMargin) {
+//            if (self.crruntScrollView) {
+//                [self.crruntScrollView.panGestureRecognizer requireGestureRecognizerToFail:self.panGestureRecognizer];
+//            }
+            self.contentOffset = CGPointMake(0,self.kTopViewH);
         }
         if (self.contentOffset.y < 0) {
             self.contentOffset = CGPointMake(0, 0);
@@ -420,7 +420,7 @@
     CGFloat insertTop = scrollView.contentInset.top;
     
     if (scrollView.contentSize.height <= scrollView.getH + self.kTopViewH - self.scrollTopMargin - self.contentOffset.y) {
-        CGFloat insertY = scrollView.getH - scrollView.contentSize.height - self.contentOffset.y - self.kMidToolBarViewH;
+        CGFloat insertY = scrollView.getH - scrollView.contentSize.height - self.contentOffset.y - self.kMidToolBarViewH - self.scrollTopMargin;
         insertY = (insertY < 0) ? 0 : insertY;
         scrollView.contentInset = UIEdgeInsetsMake(insertTop, 0, insertY, 0);
     }else{
@@ -434,10 +434,12 @@
     UIScrollView *currentScrollView = [self getBottomScrollView:frontIndex];
     if (wellScrollView) {
         if (currentScrollView) {
-            CGFloat offsetY = (currentScrollView.contentOffset.y >= -self.kMidToolBarViewH - self.scrollTopMargin) ? -self.kMidToolBarViewH - self.scrollTopMargin : currentScrollView.contentOffset.y + self.contentOffset.y;
-            offsetY = (offsetY <= -self.kTopViewH - self.scrollTopMargin - self.kMidToolBarViewH) ? -self.kTopViewH - self.scrollTopMargin - self.kMidToolBarViewH : self.contentOffset.y;
+            CGFloat offsetY = (currentScrollView.contentOffset.y >= -self.kMidToolBarViewH) ? -self.kMidToolBarViewH : currentScrollView.contentOffset.y + self.contentOffset.y;
+            offsetY = (offsetY <= -self.kTopViewH - self.kMidToolBarViewH) ? -self.kTopViewH - self.kMidToolBarViewH : offsetY - self.contentOffset.y;
             wellScrollView.frame = CGRectMake(wellScrollView.getX, currentScrollView.getY, wellScrollView.getW, currentScrollView.getH);
+//            self.isTouched = false;
             [wellScrollView setContentOffset:CGPointMake(0, offsetY) animated:false];
+//            self.isTouched = true;
         }
     }
 }
